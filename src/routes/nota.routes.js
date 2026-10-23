@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { crearNota, listarNotas, obtenerNota, actualizarNota, eliminarNota } from "../controllers/nota.controller.js";
+import { crearNota, listarNotas, obtenerNota, actualizarNota, eliminarNota } from "../constrollers/nota.controller.js";
 import { validarCrearNota, validarActualizarNota, validarNotaId } from "../validators/nota.validator.js";
 export const notaRouter = Router();
 notaRouter.post("/", validarCrearNota, crearNota);

@@ -1,7 +1,8 @@
 import app from "./app.js";
 import { pool } from "./config/db.js";
+import "dotenv/config";
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 try {
   const connection = await pool.getConnection();
