@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
   },
   "repository": {
     "type": "git",
@@ -13,9 +14,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/ixenbrandonestiben-lang/campuslands-api.rest-notas/issues"
   },
-  "homepage": "https://github.com/ixenbrandonestiben-lang/campuslands-api.rest-notas#readme"
+  "homepage": "https://github.com/ixenbrandonestiben-lang/campuslands-api.rest-notas#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^5.3.0",
+    "express-validator": "^7.3.2",
+    "mysql2": "^3.24.6"
+  }
 }
