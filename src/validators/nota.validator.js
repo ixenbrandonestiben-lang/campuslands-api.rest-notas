@@ -7,3 +7,13 @@ const responderErrores = (req, res, next) => {
   }
   next();
 };
+
+export const validarCrearNota = [
+  body("titulo").trim().isLength({ min: 3, max: 60 })
+    .withMessage("El título debe tener entre 3 y 60 caracteres"),
+  body("contenido").trim().isLength({ min: 1, max: 280 })
+    .withMessage("El contenido debe tener entre 1 y 280 caracteres"),
+  body("categoria").isIn(["clase", "tarea", "idea"])
+    .withMessage("Categoría no válida"),
+  responderErrores,
+];
