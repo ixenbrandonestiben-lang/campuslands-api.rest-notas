@@ -15,3 +15,8 @@ export const notaService = {
     const [rows] = await pool.query("SELECT * FROM notas ORDER BY createdAt DESC");
     return rows;
   },
+  
+  buscarPorId: async (id) => {
+    const [rows] = await pool.query("SELECT * FROM notas WHERE id = ?", [id]);
+    return rows[0] || null;
+  },
