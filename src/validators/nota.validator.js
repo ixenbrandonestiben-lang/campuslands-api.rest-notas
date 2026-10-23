@@ -24,3 +24,8 @@ export const validarActualizarNota = [
   body("categoria").optional().isIn(["clase", "tarea", "idea"]),
   responderErrores,
 ];
+
+export const validarNotaId = [
+  param("id").isInt({ min: 1 }).withMessage("El id no es válido"),
+  responderErrores,
+];
