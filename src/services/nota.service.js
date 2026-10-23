@@ -10,30 +10,6 @@ export const notaService = {
     const [rows] = await pool.query("SELECT * FROM notas WHERE id = ?", [result.insertId]);
     return rows[0];
   },
-  
-  listar: async () => {
-    const [rows] = await pool.query("SELECT * FROM notas ORDER BY createdAt DESC");
-    return rows;
-  },
-  
-  buscarPorId: async (id) => {
-    const [rows] = await pool.query("SELECT * FROM notas WHERE id = ?", [id]);
-    return rows[0] || null;
-  },
-
-  avaScript
-import { pool } from "../config/db.js";
-
-export const notaService = {
-  crear: async (datos) => {
-    const { titulo, contenido, categoria } = datos;
-    const [result] = await pool.query(
-      "INSERT INTO notas (titulo, contenido, categoria) VALUES (?, ?, ?)",
-      [titulo, contenido, categoria]
-    );
-    const [rows] = await pool.query("SELECT * FROM notas WHERE id = ?", [result.insertId]);
-    return rows[0];
-  },
 
   listar: async () => {
     const [rows] = await pool.query("SELECT * FROM notas ORDER BY createdAt DESC");
@@ -75,3 +51,12 @@ export const notaService = {
     if (result.affectedRows === 0) return null;
     return await notaService.buscarPorId(id);
   },
+
+  eliminar: async (id) => {
+    const [rows] = await pool.query("SELECT * FROM notas WHERE id = ?", [id]);
+    if (rows.length === 0) return null;
+
+    await pool.query("DELETE FROM notas WHERE id = ?", [id]);
+    return rows[0];
+  },
+};
